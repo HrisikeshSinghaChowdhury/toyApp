@@ -1,0 +1,57 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+td {
+  font-size: 16px;
+  text-padding : 0.2px;
+  text-decoration : bold;
+
+}
+
+.error_explanation
+ {
+
+ }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 20px;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: top;
+  width: 30%;
+  background: #ccc;
+  padding: 20px;
+}
+
+article {
+  text-align: center;
+  float: center;
+  padding: 20px;
+  width: 100%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  margin-bottom: 2px;
+}
