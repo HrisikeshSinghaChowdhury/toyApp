@@ -1,27 +1,24 @@
-<%= form_with(model: micropost) do |form| %>
-  <% if micropost.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(micropost.errors.count, "error") %> prohibited this micropost from being saved:</h2>
+<%= form_with(model: @micropost, method: :post) do |form| %>
+  <section>
+    <div>
 
-      <ul>
-        <% micropost.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+      <div class="card text-centre" style="background-color: #a55 ;border-radius: 25px; height: 50%">
+        <div class="container">
+
+          <%= form.label :content %>
+          <%= form.text_area :content %>
+
+          <input type="hidden" name="id" value=<%=session[:user_id]%>>
+
+          <br>
+            <div class="actions">
+             &nbsp;&nbsp;<%= form.submit "Create my Blog" %>
+             <%= link_to 'Back', user_path(current_user), class: 'btn btn-secondary'%>
+
+            </div>
+        </div>
+      </div>
+
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit%>
-  </div>
+  </section>
 <% end %>

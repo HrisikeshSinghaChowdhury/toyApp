@@ -1,13 +1,14 @@
 class MicropostsController < ApplicationController
-  before_action :set_micropost, only: %i[ show edit update destroy ]
+  before_action :logged_in_user, only: %i[edit create destroy update ]
 
   # GET /microposts or /microposts.json
   def index
-    @microposts = Micropost.all
+    @microposts = current_user.microposts if logged_in?
   end
 
   # GET /microposts/1 or /microposts/1.json
   def show
+    @microposts = current_user.microposts if logged_in?
   end
 
   # GET /microposts/new
@@ -21,35 +22,32 @@ class MicropostsController < ApplicationController
 
   # POST /microposts or /microposts.json
   def create
-    @micropost = Micropost.new(micropost_params)
+    @micropost = current_user.microposts.build(micropost_params) if logged_in?
 
-    respond_to do |format|
-      if @micropost.save
-        format.html { redirect_to @micropost, notice: "Micropost was successfully created." }
-        format.json { render :show, status: :created, location: @micropost }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @micropost.errors, status: :unprocessable_entity }
-      end
+    if @microsoft.nil? && @micropost.save
+      flash[:success] = "Micropost created!"
+      redirect_to user_path(current_user)
+    else
+      flash[:danger] = "Sorry Content is empty"
+      redirect_to new_micropost_url
     end
-  end
+   end
 
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update
-    respond_to do |format|
-      if @micropost.update(micropost_params)
-        format.html { redirect_to @micropost, notice: "Micropost was successfully updated." }
-        format.json { render :show, status: :ok, location: @micropost }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @micropost.errors, status: :unprocessable_entity }
-      end
+
+    if @micropost.update(micropost_params)
+      flash[:success] = "Micropost updated!"
+      redirect_to user_path(current_user)
+    else
+      flash[:danger] = "Sorry Content is empty"
+      redirect_to new_micropost_url
     end
   end
 
   # DELETE /microposts/1 or /microposts/1.json
   def destroy
-    @micropost.destroy
+    @micropost.destroy if logged_in?
     respond_to do |format|
       format.html { redirect_to microposts_url, notice: "Micropost was successfully destroyed." }
       format.json { head :no_content }
@@ -64,6 +62,15 @@ class MicropostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micropost_params
-      params.require(:micropost).permit(:content, :user_id)
+      params.require(:micropost).permit(:id, :user_id, :content)
+    end
+
+    # Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+      @micropost = Micropost.find(params[:id])
     end
 end

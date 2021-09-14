@@ -4,16 +4,23 @@ td {
   font-size: 16px;
   text-padding : 0.2px;
   text-decoration : bold;
-
+  border: 2px;
+  border-style: dashed;
 }
 
-.error_explanation
- {
+#container-blog {
+    column-count:1;
 
- }
 
-* {
-  box-sizing: border-box;
+    background-color: yellow;
+    -moz-column-count:2;
+    width:200px;
+    height:170px;
+    left-margin: 50%;
+    right-margin: 50%;
+}
+#tbl {
+  background-color: yellow;
 }
 
 body {
@@ -48,10 +55,9 @@ article {
 
 /* Style the footer */
 footer {
+  position: float;
   background-color: #777;
-  padding: 10px;
   text-align: center;
   color: white;
-  padding: 20px;
   margin-bottom: 2px;
 }

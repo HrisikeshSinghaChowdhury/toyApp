@@ -1,5 +1,7 @@
-<h1>New Micropost</h1>
-
-<%= render 'form', micropost: @micropost %>
-
-<%= link_to 'Back', microposts_path %>
+<%if logged_in? %>
+  <h4>New Micropost for <%=session[:user_email]%></h4>
+  <%= render 'form', micropost: @micropost %>
+ <%else
+  flash[:danger] = "Please Login"
+  link_to login_url %>
+  <%end%>

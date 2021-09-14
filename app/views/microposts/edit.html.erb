@@ -1,6 +1,31 @@
 <h1>Editing Micropost</h1>
 
-<%= render 'form', micropost: @micropost %>
+<!--# render 'form', micropost: @micropost -->
 
-<%= link_to 'Show', @micropost %> |
-<%= link_to 'Back', microposts_path %>
+<%= form_for(@micropost) do |form| %>
+  <section>
+    <div>
+
+      <div class="card text-centre" style="background-color: #a55 ;border-radius: 25px; height: 50%">
+        <div class="container">
+
+          <%= form.label :content %>
+          <%= form.text_area :content %>
+
+          <input type="hidden" name="id" value=<%=session[:user_id]%>>
+
+          <br>
+            <div class="actions">
+             &nbsp;&nbsp;<%= form.submit "Update my Blog" %>
+             <%= link_to 'Back', user_path(current_user), class: 'btn btn-secondary'%>
+
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+<% end %>
+
+
+
