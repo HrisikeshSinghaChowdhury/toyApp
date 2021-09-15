@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[ show edit update ]
-
+  before_action :chk_access, only: %i[ edit update ]
   # GET /users or /users.json
   def index
     @users = User.all
@@ -18,11 +18,6 @@ class UsersController < ApplicationController
 
   # GET /users/13/edit
   def edit
-    if params[:id] != session[:user_id]
-      flash[:danger] = "Unauthorized Access"
-      session.destroy
-      redirect_to login_path
-    end
   end
 
   # POST /users or /users.json
@@ -74,5 +69,12 @@ class UsersController < ApplicationController
         redirect_to login_url
       end
       @user = User.find(params[:id])
+    end
+
+    def chkAccess
+      if params[:id] != session[:user_id]
+        flash[:danger] = "Authoriztion failed"
+        render 'shared/error_authorization'
+      end
     end
 end
