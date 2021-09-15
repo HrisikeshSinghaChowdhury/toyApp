@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: %i[edit create destroy update ]
-  before_action :chk_access, only: %i[ edit update ]
+  before_action :chk_access, only: %i[ edit update destroy ]
 
   # GET /microposts or /microposts.json
   def index
@@ -69,10 +69,11 @@ class MicropostsController < ApplicationController
         flash[:danger] = "Please log in."
         redirect_to login_url
       end
-      @micropost = Micropost.find(params[:id])
+      #  @micropost = Micropost.find(params[:id])
     end
 
     def chk_access
+      @micropost = Micropost.find(params[:id])
       if @micropost.user_id != current_user.id
         flash[:danger] = "Authoriztion failed"
         render 'shared/error_authorization'

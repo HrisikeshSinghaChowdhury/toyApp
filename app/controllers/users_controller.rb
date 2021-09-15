@@ -71,8 +71,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def chkAccess
-      if params[:id] != session[:user_id]
+    def chk_access
+      if @user.id != current_user.id
         flash[:danger] = "Authoriztion failed"
         render 'shared/error_authorization'
       end
