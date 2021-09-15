@@ -13,7 +13,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
- // $("#form :input").tooltip({
+ // $("#f :input").tooltip({
 
  //      // place tooltip on the right edge
  //      position: "center right",
