@@ -1,7 +1,7 @@
-<%= provide(:title, session[:user_email]+'-Activity-Page') %>
+<%= provide(:title, 'Activity-Page') %>
 <% if !@microposts.nil? %>
 
-  <h1>Microposts</h1>
+  <h3>Blogs for <%=session[:user_email]%></h3>
     <div>
 
       <table class="center">

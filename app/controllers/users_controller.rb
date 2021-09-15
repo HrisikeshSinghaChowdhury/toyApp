@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def edit
     if params[:id] != session[:user_id]
       flash[:danger] = "Unauthorized Access"
+      session.destroy
       redirect_to login_path
     end
   end
@@ -50,14 +51,9 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    if current_user != session[:user_id]
-      flash[:danger] = "Unauthorized Access"
-      redirect_to login_path
-    else
-      @user.destroy
-      flash[:success] = "User was successfully destroyed."
-      redirect_to microposts_url
-    end
+    @user.destroy
+    flash[:success] = "User was successfully destroyed."
+    redirect_to microposts_url
   end
 
   private

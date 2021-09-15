@@ -13,4 +13,8 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+
+  def current_micropost_user_id
+    @current_micropost_user_id ||= Micropost.find_by(user_id: session[:user_id])
+  end
 end

@@ -1,4 +1,4 @@
-<%= provide(:title, session[:user_email]+'-Activity-Page') %>
+<%= provide(:title, 'Activity-Page') %>
 <%if logged_in? %>
   <h4>New Micropost for <%=session[:user_email]%></h4>
   <%= render 'form', micropost: @micropost %>

@@ -3,7 +3,7 @@ class MicropostsController < ApplicationController
 
   # GET /microposts or /microposts.json
   def index
-    @microposts = current_user.microposts if logged_in?
+    @microposts = Micropost.all if logged_in?
   end
 
   # GET /microposts/1 or /microposts/1.json
@@ -18,6 +18,11 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/1/edit
   def edit
+    if params[:id] != session[:user_id]
+      flash[:danger] = "Unauthorized Access"
+      session.destroy
+      redirect_to login_path
+    end
   end
 
   # POST /microposts or /microposts.json
@@ -35,7 +40,6 @@ class MicropostsController < ApplicationController
 
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update
-
     if @micropost.update(micropost_params)
       flash[:success] = "Micropost updated!"
       redirect_to user_path(current_user)
