@@ -18,6 +18,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if current_user != session[:user_id]
+      flash[:danger] = "Unauthorized Access"
+      redirect_to login_path
+    end
   end
 
   # POST /users or /users.json
@@ -36,7 +40,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    if @user.update_columns(name: "Ram")
+    if @user.update_columns(name: user_params[:name])
       flash[:success] = "User was successfully updated."
       redirect_to login_url
     else
