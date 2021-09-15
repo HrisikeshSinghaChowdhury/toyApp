@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_columns(name: user_params[:name])
       flash[:success] = "User was successfully updated."
-      redirect_to login_url
+      redirect_to user_path(@current_user)
     else
       flash[:danger] = "Sorry Something went wrong"
       redirect_to login_url
