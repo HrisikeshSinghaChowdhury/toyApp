@@ -1,17 +1,17 @@
 <%= provide(:title, 'Log in') %>
-  <%= form_with(url: login_path, method: :post, local: true) do |f| %>
+  <%= form_with(url: login_path, id: :form, method: :post, local: true) do |f| %>
 <section>
   <div>
     <div class="card" style="background-color: #a55 ;border-radius: 25px; height: 50%">
       <div class="container">
         <table>
          <tr>
-           <td><%= f.label :email %></td>
+           <td><%= f.label :email title="Hey Welcome Buddy!!"%></td>
            <td><%= f.email_field :email %></td>
          </tr>
 
          <tr>
-           <td><%= f.label :password %></td>
+           <td><%= f.label :password title="Make it Hard to Guess!!"%></td>
            <td><%= f.password_field :password %></td>
          </tr>
         </table>

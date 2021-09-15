@@ -48,10 +48,8 @@ class MicropostsController < ApplicationController
   # DELETE /microposts/1 or /microposts/1.json
   def destroy
     @micropost.destroy if logged_in?
-    respond_to do |format|
-      format.html { redirect_to microposts_url, notice: "Micropost was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Micropost was successfully destroyed."
+    redirect_to microposts_url
   end
 
   private

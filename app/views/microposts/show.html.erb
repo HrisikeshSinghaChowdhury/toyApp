@@ -1,9 +1,10 @@
+<%= provide(:title, session[:user_email]+'-Activity-Page') %>
 <% if !@microposts.nil? %>
 
   <h1>Microposts</h1>
-    <div id="container-blog">
+    <div>
 
-      <table id="tbl" border="3">
+      <table class="center">
         <% @microposts.each do |micropost| %>
           <tr>
             <td>

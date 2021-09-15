@@ -23,6 +23,17 @@ td {
   background-color: yellow;
 }
 
+#non-editable {
+  pointer-events: none;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  border: 3;
+}
+
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -55,9 +66,13 @@ article {
 
 /* Style the footer */
 footer {
-  position: float;
+  position: fixed;
+  margin:0 auto;
+  height:auto;
   background-color: #777;
   text-align: center;
   color: white;
-  margin-bottom: 2px;
+  bottom: 0px;
+  overflow:hidden;
+  width: 100%;
 }
