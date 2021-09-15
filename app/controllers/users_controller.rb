@@ -16,9 +16,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1/edit
+  # GET /users/13/edit
   def edit
-    if current_user != session[:user_id]
+    if params[:id] != session[:user_id]
       flash[:danger] = "Unauthorized Access"
       redirect_to login_path
     end
@@ -32,8 +32,7 @@ class UsersController < ApplicationController
         flash[:success] = "Sign Up Process Successfull.Welcome #{@user[:name]} to the QI Blog.Please Login to Continue"
         redirect_to login_url
       else
-        # => format.html { render :new, status: :unprocessable_entity }
-        # => format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:success] = "Oops something went wrong!!"
         render 'new'
       end
   end
@@ -51,10 +50,13 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+    if current_user != session[:user_id]
+      flash[:danger] = "Unauthorized Access"
+      redirect_to login_path
+    else
+      @user.destroy
+      flash[:success] = "User was successfully destroyed."
+      redirect_to microposts_url
     end
   end
 
