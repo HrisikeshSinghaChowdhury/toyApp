@@ -38,7 +38,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    # @user.avatar.attach(user_params[:avatar])
+
+    @user.avatar.attach(user_params[:avatar])
 
     if @user.update_columns(name: user_params[:name])
       flash[:success] = "User was successfully updated."
