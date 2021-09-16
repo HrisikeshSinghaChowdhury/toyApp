@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[ show edit update ]
-  before_action :chk_access, only: %i[ edit update ]
-  # before_action :chk_all_params, only: %i[ create edit update ]
+  before_action :chk_access, only: %i[ show edit update ]
 
 
   # GET /users or /users.json
@@ -32,13 +31,15 @@ class UsersController < ApplicationController
       flash[:success] = "Sign Up Process Successfull.Welcome #{@user[:name]} to the QI Blog.Please Login to Continue"
       redirect_to login_url
     else
+      flash[:danger] = "Oops something went wrong"
       render 'new'
     end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    @user.avatar.attach(user_params[:avatar])
+    # @user.avatar.attach(user_params[:avatar])
+
     if @user.update_columns(name: user_params[:name])
       flash[:success] = "User was successfully updated."
       redirect_to user_path(@current_user)
