@@ -1,5 +1,18 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+body {
+  background: aquamarine;
+  background-image: url("qiblog.jpg");
+  border-radius: 8px;
+}
+
+.container {
+  margin-left: 50%;
+  margin-right: 50%;
+  margin-top: 14%;
+}
+
+
 td {
   font-size: 16px;
   text-padding : 0.2px;
@@ -55,7 +68,7 @@ nav-edit {
   padding: 20px;
 }
 
-article {
+article-edit {
   text-align: center;
   float: center;
   padding: 20px;
