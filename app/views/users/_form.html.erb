@@ -16,6 +16,11 @@
     <%= form.text_area :name %>
   </div>
 
+  <div>
+    <%= f.label :"Upload Profile Photo" %>
+    <%= f.file_field :avatar %>
+  </div>
+
   <div id="non-editable" class="field">
     <%= form.label :email %>
     <%= form.text_area :email%>

@@ -5,5 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 230 },
              uniqueness: true
   validates :password, presence: true, length: { maximum: 430 }
+  validates :avatar, presence: true
   has_secure_password
+  has_one_attached :avatar
 end
