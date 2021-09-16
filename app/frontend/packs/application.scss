@@ -90,17 +90,28 @@ footer {
   width: 100%;
 }
 
-tooltip {
-    background-color:#000;
-    border:1px solid #fff;
-    padding:10px 15px;
-    width:200px;
-    display:none;
-    color:#fff;
-    text-align:left;
-    font-size:12px;
+-------------------------------------------------------
+-------------------------------------------------------
+.container-login{
+    height: 70%;
+    margin: auto;
+  }
 
-    /* outline radius for mozilla/firefox only */
-    -moz-box-shadow:0 0 10px #000;
-    -webkit-box-shadow:0 0 10px #000;
+.login-content{
+  align-items: top;
+  display: inline-flex;
+  align-items: flex-start;
+  border: 3px dashed brown;
+  margin-right: 100%;
 }
+
+
+.input-div{
+  position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 25px;
+    padding: 5px 0;
+    border-bottom: 2px solid #d9d9d9;
+}
+

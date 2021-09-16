@@ -13,18 +13,25 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
- // $("#f :input").tooltip({
 
- //      // place tooltip on the right edge
- //      position: "center right",
+//////////////////////////////////////////////////
+ const inputs = document.querySelectorAll(".input");
 
- //      // a little tweaking of the position
- //      offset: [-2, 10],
 
- //      // use the built-in fadeIn/fadeOut effect
- //      effect: "fade",
+function addcl(){
+  let parent = this.parentNode.parentNode;
+  parent.classList.add("focus");
+}
 
- //      // custom opacity setting
- //      opacity: 0.7
+function remcl(){
+  let parent = this.parentNode.parentNode;
+  if(this.value == ""){
+    parent.classList.remove("focus");
+  }
+}
 
- //      });
+
+inputs.forEach(input => {
+  input.addEventListener("focus", addcl);
+  input.addEventListener("blur", remcl);
+});
