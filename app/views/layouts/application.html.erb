@@ -20,7 +20,7 @@
             <% flash.each do |message_type, message| %>
               <div class="alert-fixed alert-<%=message_type%> centre"><%=message%></div>
             <%end %>
-            <span class="image-text"><%= yield %></span>
+            <%= yield %>
         </div>
       </div>
     </div>

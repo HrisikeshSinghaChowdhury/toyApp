@@ -13,13 +13,7 @@ body {
 }
 
 
-td {
-  font-size: 16px;
-  text-padding : 0.2px;
-  text-decoration : bold;
-  border: 2px;
-  border-style: dashed;
-}
+
 
 #container-blog {
     column-count:1;
@@ -31,9 +25,6 @@ td {
     height:170px;
     left-margin: 50%;
     right-margin: 50%;
-}
-#tbl {
-  background-color: yellow;
 }
 
 #non-editable {
@@ -99,7 +90,7 @@ footer {
 
 .login-content{
   display: flex;
-  justify-content: center;
+  justify-content: left;
   border: 3px dashed brown;
   margin-right: 100%;
 }
