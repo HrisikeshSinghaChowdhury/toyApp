@@ -98,9 +98,8 @@ footer {
   }
 
 .login-content{
-  align-items: top;
-  display: inline-flex;
-  align-items: flex-start;
+  display: flex;
+  justify-content: center;
   border: 3px dashed brown;
   margin-right: 100%;
 }
@@ -115,3 +114,13 @@ footer {
     border-bottom: 2px solid #d9d9d9;
 }
 
+.alert-fixed {
+    position:fixed;
+    top: 40px;
+    left: 0px;
+    width: 100%;
+    z-index:9999;
+    border-radius:3px;
+    height: 30px;
+    text-align: center;
+}

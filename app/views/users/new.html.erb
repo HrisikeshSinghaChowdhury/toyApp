@@ -1,47 +1,52 @@
 <%= provide(:title, 'Sign up') %>
-  <%= form_with(model: @user) do |f| %>
-  <section>
-    <div>
 
-     <div class="card" style="background-color: #a55 ;border-radius: 25px; height: 50%">
-      <div class="container">
+<%= form_with(model: @user) do |f| %>
+<div class="row mb-3">
+  <%= f.label :name, class: "col-sm-1 col-form-label"%>
+  <div class="col sm-10">
+    <%= f.text_field :name %>
+  </div>
+</div>
 
-        <table>
-          <tr>
-            <td><%= f.label :name %></td>
-            <td><%= f.text_field :name %></td>
-          </tr>
+<div class="row mb-3">
+  <%= f.label :email, class: "col-sm-1 col-form-label"%>
+  <div class="col sm-10">
+    <%= f.email_field :email %>
+  </div>
+</div>
 
-          <tr>
-            <td><%= f.label :email %></td>
-            <td><%= f.email_field :email %></td>
-          </tr>
+<div class="row mb-3">
+  <%= f.label :password, class: "col-sm-1 col-form-label"%>
+   <div class="col sm-10">
+     <%= f.password_field :password %>
+  </div>
+</div>
 
-          <tr>
-            <td><%= f.label :password %></td>
-            <td><%= f.password_field :password %></td>
-          </tr>
-
-          <tr>
-            <td><%= f.label :password_confirmation, "Confirmation"%></td>
-            <td><%= f.password_field :password_confirmation %></td>
-          </tr>
-
-          <tr>
-            <td><%= f.label :"Upload Profile Photo" %></td>
-            <td><%= f.file_field :avatar %></td>
-          </tr>
-
-          <div class="actions">
-            <%= f.submit "Create my account" %>
-            <%= link_to 'Back', root_path ,class: 'btn-secondary'%>
-          </div>
-
-        </table>
-      </div>
+<div class="row mb-3">
+     <div class="col sm-10">
+           <%= f.label :password_confirmation, "Confirmation", class: "col-sm-2 col-form-label"%>%>
+           <%= f.password_field :password_confirmation %>
     </div>
   </div>
-</section>
+
+
+<div class="row mb-3">
+     <div class="col sm-10">
+
+            <%= f.label :"Upload Profile Photo" %>
+            <%= f.file_field :avatar %>
+
+
+
+
+            <%= f.submit "Create my account" %>
+            <%= link_to 'Back', root_path ,class: 'btn-secondary'%>
+
+
+</div>
+  </div>
+
+
 
 <% end %>
 
