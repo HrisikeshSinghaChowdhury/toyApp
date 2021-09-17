@@ -9,7 +9,11 @@ class User < ApplicationRecord
   validates :password_digest, presence: true,\
   if: ->(user) { user.password_digest_changed? }
 
-  validates :avatar, presence: true
+  validates :avatar, presence: true,\
+  if: ->(user) { user.password_digest_changed? }
+
   has_secure_password
   has_one_attached :avatar
+
+  # check with dependent: :destroy in case of avatar(2nd demo)
 end

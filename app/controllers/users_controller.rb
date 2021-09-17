@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[ show edit update ]
   before_action :chk_access, only: %i[ show edit update ]
-
-
+  before_action :set_user, only: :destroy
   # GET /users or /users.json
   def index
     @users = User.all
@@ -21,6 +20,8 @@ class UsersController < ApplicationController
   # GET /users/13/edit
   def edit
   end
+
+  # remove avatar attach (pic upload) from sign up page(2nd demo)
 
   # POST /users or /users.json
   def create
@@ -52,9 +53,12 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-    flash[:success] = "User was successfully destroyed."
-    redirect_to microposts_url
+    if @user.avatar.destroy
+        flash[:success] = "Profile picture successfully removed."
+    else
+        flash[:danger] = "Oops smething went wrong"
+    end
+    redirect_to user_path current_user
   end
 
   private
@@ -84,5 +88,9 @@ class UsersController < ApplicationController
         flash[:danger] = "Authoriztion failed"
         render 'shared/error_authorization'
       end
+    end
+
+    def delete_avatar
+
     end
 end

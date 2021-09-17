@@ -26,6 +26,12 @@
     <%= form.file_field :avatar %>
   </div>
 
+  <div>
+    <% if user.avatar.attached? %>
+      <%= link_to "Delete Profile ID", user, method: :delete, data: { confirm: 'Are you sure to delete your profile picture?' } %>
+      <%end%>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -1,7 +1,7 @@
 <%= provide(:title, @user.name+"-HomePage") %>
-<div class="row justify-content-center">
-<div class="col-auto">
-<table class="table table-bordered table-responsive" id="tbl">
+<div class="flex-item">
+ <%= form_with(model: @user) do |f| %>
+<table class="table">
   <thead>
     <tr>
       <th class="table-info">Photo</th>
@@ -15,20 +15,27 @@
 
   <tbody>
     <tr>
-        <td class="table-danger"><% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, style: 'width:22%;'%><%end%></td>
+       <td class="table-danger">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, style: 'width:22%;'%>
+        <%else%>
+          <%= gravatar_for(@user)%>
+        <%end%>
+        </td>
+
         <td class="table-danger"><%= @user.name %></td>
         <td class="table-danger"><%= @user.email %></td>
         <td class="table-danger"><%= @user.created_at %></td>
         <td class="table-danger"><%= @user.updated_at %></td>
-        <td class="table-secondary"><%= link_to 'Edit User', edit_user_path %></td>
-        <td class="table-secondary"><%= link_to 'Add New Blog', new_micropost_path %></td>
+        <td class="table-secondary"><%= link_to 'User Profile', edit_user_path %></td>
+         <td class="table-secondary"><%= link_to 'Add New Blog', new_micropost_path %></td>
         <td class="table-secondary"><%= link_to 'Blogs', microposts_path %></td>
-        </tr>
+      </tr>
   </tbody>
 </table>
 </div>
-</div>
+<%end%>
+
 
 
 
