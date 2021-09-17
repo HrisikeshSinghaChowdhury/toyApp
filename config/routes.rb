@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   get '/microposts', to: 'microposts#show'
 
   resources :users
-  resources :microposts, only: [:show, :new, :create, :update, :edit]
+  resources :microposts, only: [:show, :new, :create, :destroy, :update, :edit]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

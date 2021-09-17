@@ -1,38 +1,37 @@
 <%= provide(:title, 'Log in Page') %>
 <div class="container-login">
   <div class="login-content">
-<%= form_with(url: login_path, method: :post, local: true) do |f| %>
+  <%= form_with(url: login_path, method: :post, local: true) do |f| %>
 
-  <h4>&nbsp;&nbsp;&nbsp;&nbsp;Welcome to Login Page</h4>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;Welcome to Login Page</h4>
 
-    <div class="input-div one">
+      <div class="input-div one">
 
-      <div class="i">
-        <i class="fas fa-user"></i>
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+
+        <div class="div">
+          <%= f.label :email %>
+          <%= f.email_field :email, size: "25", placeholder: "Enter the email" %>
+        </div>
       </div>
 
-      <div class="div">
-        <%= f.label :email %>
-        <%= f.email_field :email, size: "25", placeholder: "Enter the email" %>
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+
+        <div class="div">
+          <%= f.label :password %>
+          <%= f.password_field :password, size: "24", placeholder: "Enter the password" %>
+        </div>
       </div>
-    </div>
 
-    <div class="input-div pass">
-
-      <div class="i">
-        <i class="fas fa-user"></i>
+      <div class="actions">
+        <%= f.submit "Log In" %>
+        <%= link_to 'Back', root_path %>
       </div>
-
-      <div class="div">
-        <%= f.label :password %>
-        <%= f.password_field :password, size: "24", placeholder: "Enter the password" %>
-      </div>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Log In" %>
-      <%= link_to 'Back', root_path %>
-    </div>
-  <% end %>
- </div>
+    <% end %>
+  </div>
 </div>

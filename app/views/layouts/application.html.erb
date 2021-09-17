@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title><%= yield(:title) %></title>
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,14 +18,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-            <% flash.each do |message_type, message| %>
-              <div class="alert-fixed alert-<%=message_type%> centre"><%=message%></div>
-            <%end %>
-            <%= yield %>
+
+          <% flash.each do |message_type, message| %>
+            <div class="alert-fixed alert-<%=message_type%> centre"><%=message%></div>
+          <%end %>
+          <%= yield %>
         </div>
       </div>
     </div>
-
 
   <%= render 'layouts/footer' %>
   </body>

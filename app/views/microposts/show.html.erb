@@ -2,8 +2,6 @@
 <% if !@microposts.nil? %>
 
   <h3>Blogs for <%=session[:user_email]%></h3>
-    <div>
-
       <table class="center">
         <% @microposts.each do |micropost| %>
           <tr>
@@ -15,12 +13,10 @@
                <%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %>
             </td>
           </tr>
-          <% end %>
-
+        <% end %>
       </table>
-   <%= link_to 'Back', user_path(current_user), class: 'btn btn-secondary'%>
-
-<% else
-  flash[:danger] = "Please Login"
-  link_to login_path
-end %>
+      <%= link_to 'Back', user_path(current_user), class: 'btn btn-secondary'%>
+  <% else
+    flash[:danger] = "Please Login"
+    link_to login_path
+  end %>
