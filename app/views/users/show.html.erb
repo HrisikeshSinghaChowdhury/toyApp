@@ -1,8 +1,6 @@
 <%= provide(:title, "HomePage") %>
-<div class="flex-item" id="new_blog">
-</div>
-<br>
 <div class="flex-item">
+
   <%= form_with(model: @user) do |f| %>
   <table class="table">
 
@@ -39,6 +37,9 @@
     </tbody>
    </table>
  <% end%>
+ <div id="blogs">
+  </div>
+  <br>
 </div>
 
 

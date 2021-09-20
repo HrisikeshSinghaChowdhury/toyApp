@@ -1,1 +1,7 @@
-alert("<%="Hii please proceed..."%>");
+<% if logged_in? %>
+alert("Hii please proceed..");
+<%else%>
+alert("Sorry something went wrong");
+<%end%>
+var blogs = document.querySelector("#blogs");
+blogs.insertAdjacentHTML("beforeend", "<%= j render 'form', micropost: @micropost %>");

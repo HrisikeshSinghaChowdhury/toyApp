@@ -16,7 +16,6 @@ class MicropostsController < ApplicationController
   def new
     @micropost = Micropost.new
     respond_to do |format|
-      # format.html { render layout: false }
       format.js
     end
   end
@@ -33,7 +32,7 @@ class MicropostsController < ApplicationController
       if @micropost.nil? && @micropost.save
         flash[:success] = "Micropost created!"
         # redirect_to user_path(current_user)
-        format.js
+        # format.js
       else
         flash[:danger] = "Sorry Content is empty"
         redirect_to new_micropost_url

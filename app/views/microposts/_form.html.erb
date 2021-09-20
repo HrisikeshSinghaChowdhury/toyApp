@@ -1,4 +1,5 @@
-<%= form_with(model: @micropost, method: :post, remote: :true) do |form| %>
+<%= provide(:title, 'Activity-Page') %>
+<%= form_with(model: @micropost) do |form| %>
   <section>
     <div>
 
