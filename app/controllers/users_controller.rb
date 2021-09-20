@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+
   end
 
   # GET /users/13/edit
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = "Sign Up Process Successfull.Welcome #{@user[:name]} to the QI Blog.Please Login to Continue"
-      redirect_to login_url
+      redirect_to user_path current_user
     else
       flash[:danger] = "Oops something went wrong"
       render 'new'

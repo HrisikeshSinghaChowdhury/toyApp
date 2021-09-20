@@ -1,7 +1,9 @@
-<%= provide(:title, @user.name+"-HomePage") %>
-
+<%= provide(:title, "HomePage") %>
+<div class="flex-item" id="new_blog">
+</div>
+<br>
 <div class="flex-item">
-
+  <%= form_with(model: @user) do |f| %>
   <table class="table">
 
     <thead>
@@ -31,15 +33,12 @@
           <td class="table-danger"><%= @user.created_at %></td>
           <td class="table-danger"><%= @user.updated_at %></td>
           <td class="table-secondary"><%= link_to 'User Profile', edit_user_path %></td>
-          <td class="table-secondary"><%= link_to 'Add New Blog', new_micropost_path %></td>
+          <td class="table-secondary"><%= link_to 'Add New Blog', new_micropost_path, name: "item", method: :get, remote: true %></td>
           <td class="table-secondary"><%= link_to 'Blogs', microposts_path %></td>
         </tr>
     </tbody>
-  </table>
+   </table>
+ <% end%>
 </div>
-
-
-
-
 
 

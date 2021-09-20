@@ -15,6 +15,10 @@ class MicropostsController < ApplicationController
   # GET /microposts/new
   def new
     @micropost = Micropost.new
+    respond_to do |format|
+      # format.html { render layout: false }
+      format.js
+    end
   end
 
   # GET /microposts/1/edit
@@ -25,12 +29,15 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params) if logged_in?
 
-    if @microsoft.nil? && @micropost.save
-      flash[:success] = "Micropost created!"
-      redirect_to user_path(current_user)
-    else
-      flash[:danger] = "Sorry Content is empty"
-      redirect_to new_micropost_url
+    respond_to do |format|
+      if @micropost.nil? && @micropost.save
+        flash[:success] = "Micropost created!"
+        # redirect_to user_path(current_user)
+        format.js
+      else
+        flash[:danger] = "Sorry Content is empty"
+        redirect_to new_micropost_url
+      end
     end
    end
 
