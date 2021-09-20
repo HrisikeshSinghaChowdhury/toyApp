@@ -15,8 +15,12 @@
           </tr>
         <% end %>
       </table>
+       <td class="table-secondary"><%= link_to 'Add New Blog', new_micropost_path, name: "item", method: :get, remote: true %></td>
       <%= link_to 'Back', user_path(current_user), class: 'btn btn-secondary'%>
   <% else
     flash[:danger] = "Please Login"
     link_to login_path
   end %>
+  <div id="blogs">
+  </div>
+  <br>

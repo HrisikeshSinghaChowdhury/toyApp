@@ -1,5 +1,5 @@
 <%= provide(:title, 'Activity-Page') %>
-<%= form_with(model: @micropost) do |form| %>
+<%= form_with(model: @micropost, method: :post, remote: true) do |form| %>
   <section>
     <div>
 
@@ -14,7 +14,7 @@
           <br>
             <div class="actions">
              &nbsp;&nbsp;<%= form.submit "Create my Blog" %>
-             <%= link_to 'Back', user_path(current_user), class: 'btn btn-secondary'%>
+             <%= link_to 'Back', micropost_path(current_user), class: 'btn btn-secondary'%>
 
             </div>
         </div>

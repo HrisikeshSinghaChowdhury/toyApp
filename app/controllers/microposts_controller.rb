@@ -32,11 +32,11 @@ class MicropostsController < ApplicationController
       if @micropost.nil? && @micropost.save
         flash[:success] = "Micropost created!"
         # redirect_to user_path(current_user)
-        # format.js
       else
         flash[:danger] = "Sorry Content is empty"
         redirect_to new_micropost_url
       end
+      format.js
     end
    end
 
