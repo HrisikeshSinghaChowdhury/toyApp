@@ -1,4 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function()
+{
+  $("#blogs").show();
   alert("Hii please proceed to edit your blog..");
   $("#blogs").append("<%= j render 'form', micropost: @micropost %>");
 });
