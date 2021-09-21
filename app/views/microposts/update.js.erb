@@ -1,3 +1,2 @@
 alert("Hurray Blog has been successfully edited....");
-$("#blog-edit-<%=@micropost.id %>").replaceWith("<%= j render 'micropost',micropost: @micropost %>");
-$("#blogs").hide();
+$("#blog-edit-<%=@item.id %>").replaceWith("<%= j render 'micropost', micropost: @item %>");
