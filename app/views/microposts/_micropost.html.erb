@@ -1,10 +1,10 @@
 <tr>
-            <td>
+            <td id="blog-edit">
               <%= micropost.content %>
             </td>
             <td>
                <%= link_to 'Show', micropost, remote: true %>
-               <%= link_to 'Edit', edit_micropost_path(micropost) %>
+               <%= link_to 'Edit', edit_micropost_path(micropost), method: :get, remote: true %>
                <%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %>
             </td>
 

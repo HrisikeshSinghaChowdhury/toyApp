@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: %i[create destroy update index show]
+  before_action :logged_in_user, only: %i[create edit destroy update index show]
   # before_action :chk_access, only: %i[ edit update destroy show ]
   before_action :chk_access, only: %i[ index ]
 
@@ -41,15 +41,8 @@ class MicropostsController < ApplicationController
 
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update
-
     @micropost = Micropost.find(params[:id])
-    if @micropost.update(micropost_params)
-      flash[:success] = "Micropost updated!"
-      redirect_to user_path(current_user)
-    else
-      flash[:danger] = "Sorry Content is empty"
-      redirect_to new_micropost_url
-    end
+    @micropost.update_columns(content: micropost_params[:content])
   end
 
   # DELETE /microposts/1 or /microposts/1.json
