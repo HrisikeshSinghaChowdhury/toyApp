@@ -1,27 +1,26 @@
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: %i[edit create destroy update ]
-  before_action :chk_access, only: %i[ edit update destroy ]
+  before_action :logged_in_user, only: %i[edit create destroy update index show]
+  # before_action :chk_access, only: %i[ edit update destroy show ]
+  before_action :chk_access, only: %i[ index ]
 
   # GET /microposts or /microposts.json
   def index
-    @microposts = current_user.microposts if logged_in?
+    @microposts = current_user.microposts
   end
 
   # GET /microposts/1 or /microposts/1.json
   def show
-    # @micropost = current_user.microposts if logged_in?
+    @micropost =  Micropost.find(params[:id])
   end
 
   # GET /microposts/new
   def new
     @micropost = Micropost.new
-    respond_to do |format|
-      format.js
-    end
   end
 
   # GET /microposts/1/edit
   def edit
+    @micropost = Micropost.find(params[:id])
   end
 
   # POST /microposts or /microposts.json
@@ -42,6 +41,8 @@ class MicropostsController < ApplicationController
 
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update
+
+    @micropost = Micropost.find(params[:id])
     if @micropost.update(micropost_params)
       flash[:success] = "Micropost updated!"
       redirect_to user_path(current_user)
@@ -53,7 +54,8 @@ class MicropostsController < ApplicationController
 
   # DELETE /microposts/1 or /microposts/1.json
   def destroy
-    @micropost.destroy if logged_in?
+    @micropost = Micropost.find(params[:id])
+    @micropost.destroy
     flash[:success] = "Micropost was successfully destroyed."
     redirect_to microposts_url
   end
@@ -79,10 +81,11 @@ class MicropostsController < ApplicationController
     end
 
     def chk_access
-      @micropost = Micropost.find(params[:id])
-      if @micropost.user_id != current_user.id
+      # @micropost = Micropost.find(params[:id])
+      @microposts = current_user.microposts
+      if @microposts.first.user_id != current_user.id
         flash[:danger] = "Authoriztion failed"
-        render 'shared/error_authorization'
+        redirect_to shared/error_authorization
       end
     end
 end

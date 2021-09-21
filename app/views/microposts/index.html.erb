@@ -1,6 +1,6 @@
 <%= provide(:title, 'Activity-Page') %>
   <%= link_to 'Back', user_path(current_user), class: 'btn btn-secondary'%>
-      <%= link_to 'Add New Blog', new_micropost_path, name: "item", method: :get, remote: true %>
+  <%= link_to 'Add New Blog', new_micropost_path, name: "item", method: :get, remote: true %>
   <h3>Blogs for <%=session[:user_email]%></h3>
       <table class="center" id="blog-list">
         <% @microposts.each do |micropost| %>

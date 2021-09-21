@@ -3,7 +3,8 @@
               <%= micropost.content %>
             </td>
             <td>
-              <%= link_to 'Edit', edit_micropost_path(micropost) %>
+               <%= link_to 'Show', micropost_path(micropost), remote: true %>
+               <%= link_to 'Edit', edit_micropost_path(micropost) %>
                <%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %>
             </td>
 

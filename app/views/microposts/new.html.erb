@@ -1,8 +1,3 @@
 <%= provide(:title, 'Activity-Page') %>
-<%if logged_in? %>
-  <h4>New Micropost for <%=session[:user_email]%></h4>
-  <%= render 'form', micropost: @micropost %>
- <%else
-  flash[:danger] = "Please Login"
-  link_to login_url %>
-  <%end%>
+<h4>New Micropost for <%=session[:user_email]%></h4>
+<%= render 'form', micropost: @micropost %>
