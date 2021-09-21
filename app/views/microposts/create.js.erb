@@ -1,3 +1,6 @@
-alert("<%='Hurray Blog is created..'%>");
-var newblogs = document.querySelector("#blog-list");
-newblogs.insertAdjacentHTML("beforeend", "<%= j render 'micropost', micropost: @micropost %>");
+$.ajax({ success: function(result){
+  alert("Hurray Blog is created....");
+  $("#blog-list").append("<%= j render 'micropost', micropost: @micropost %>");
+  $("#blogs").hide();
+   }
+ });

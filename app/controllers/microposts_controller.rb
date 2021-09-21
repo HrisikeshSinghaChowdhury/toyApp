@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: %i[edit create destroy update index show]
+  before_action :logged_in_user, only: %i[create destroy update index show]
   # before_action :chk_access, only: %i[ edit update destroy show ]
   before_action :chk_access, only: %i[ index ]
 
