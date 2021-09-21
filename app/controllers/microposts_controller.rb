@@ -4,12 +4,12 @@ class MicropostsController < ApplicationController
 
   # GET /microposts or /microposts.json
   def index
-    @microposts = Micropost.all if logged_in?
+    @microposts = current_user.microposts if logged_in?
   end
 
   # GET /microposts/1 or /microposts/1.json
   def show
-    @microposts = current_user.microposts if logged_in?
+    # @micropost = current_user.microposts if logged_in?
   end
 
   # GET /microposts/new
@@ -26,19 +26,19 @@ class MicropostsController < ApplicationController
 
   # POST /microposts or /microposts.json
   def create
+    @micropost = Micropost.new
     @micropost = current_user.microposts.build(micropost_params) if logged_in?
 
-    respond_to do |format|
-      if @micropost.nil? && @micropost.save
-        flash[:success] = "Micropost created!"
-        # redirect_to user_path(current_user)
-      else
-        flash[:danger] = "Sorry Content is empty"
-        redirect_to new_micropost_url
-      end
-      format.js
-    end
-   end
+    @micropost.save
+    # # respond_to do |format|
+
+    #   if @micropost.nil? && @micropost.save
+    #     format.js
+    #   else
+    #     #redirect_to new_micropost_url
+    #   end
+    # end
+  end
 
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update

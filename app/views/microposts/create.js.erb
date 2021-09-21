@@ -1,7 +1,3 @@
-<% if logged_in? %>
-alert("Hurray Blog is..");
-<%else%>
-alert("Sorry something went wrong");
-<%end%>
-var blogs = document.querySelector("#blogs");
-blogs.insertAdjacentHTML("beforeend", "<%=render 'new'%>");
+alert("<%='Hurray Blog is created..'%>");
+var newblogs = document.querySelector("#blog-list");
+newblogs.insertAdjacentHTML("beforeend", "<%= j render 'micropost', micropost: @micropost %>");

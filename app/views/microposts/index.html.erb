@@ -1,22 +1,15 @@
-<% if !@microposts.nil? %>
-
-  <h1>Microposts</h1>
-    <div id="container-blog">
-
-      <table id="tbl" border="3">
+<%= provide(:title, 'Activity-Page') %>
+  <%= link_to 'Back', user_path(current_user), class: 'btn btn-secondary'%>
+      <%= link_to 'Add New Blog', new_micropost_path, name: "item", method: :get, remote: true %>
+  <h3>Blogs for <%=session[:user_email]%></h3>
+      <table class="center" id="blog-list">
         <% @microposts.each do |micropost| %>
-          <tr>
-            <td>
-              <%= micropost.content %>
-            </td>
-          </tr>
-          <% end %>
-
+        <%= render 'micropost', micropost: micropost %>
+        <% end %>
       </table>
-  <%= link_to 'Back', new_micropost_path %>
 
-<% else
-  flash[:danger] = "Please Login"
-  redirect_to login_url
-end %>
+
+
+   <div id="blogs">
+  </div>
 
