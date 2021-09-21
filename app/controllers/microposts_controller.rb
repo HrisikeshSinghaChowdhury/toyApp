@@ -16,20 +16,20 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/new
   def new
-    @item = Micropost.new
+    @micropost = Micropost.new
   end
 
   # GET /microposts/1/edit
   def edit
-    @item = Micropost.find(params[:id])
+    @micropost = Micropost.find(params[:id])
   end
 
   # POST /microposts or /microposts.json
   def create
-    @item = Micropost.new
-    @item = current_user.microposts.build(micropost_params) if logged_in?
+    @micropost = Micropost.new
+    @micropost = current_user.microposts.build(micropost_params) if logged_in?
 
-    @item.save
+    @micropost.save
     # # respond_to do |format|
 
     #   if @micropost.nil? && @micropost.save
@@ -42,8 +42,8 @@ class MicropostsController < ApplicationController
 
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update
-    @item = Micropost.find(params[:id])
-    @item.update_columns(content: micropost_params[:content])
+    @micropost = Micropost.find(params[:id])
+    @micropost.update_columns(content: micropost_params[:content])
   end
 
   # DELETE /microposts/1 or /microposts/1.json
