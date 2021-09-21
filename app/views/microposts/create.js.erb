@@ -1,6 +1,3 @@
-$.ajax({ success: function(result){
-  alert("Hurray Blog is created....");
-  $("#blog-list").append("<%= j render 'micropost', micropost: @micropost %>");
-  $("#blogs").hide();
-   }
- });
+alert("Hurray Blog is created....");
+$("#blog-list").append("<%= j render 'micropost', micropost: @micropost %>");
+$("#blogs").hide();
