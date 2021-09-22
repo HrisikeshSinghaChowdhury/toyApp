@@ -8,10 +8,10 @@ environment.plugins.prepend('Provide',
   })
 )
 
-environment.plugins.prepend('Provide-FlatPicker',
-  new webpack.ProvidePlugin({
-    $: 'flatpickr/dis',
-    flatpickr: 'flatpickr/dis/flatpickr.js'
-  })
-)
+// environment.plugins.prepend('Provide-FlatPicker',
+//   new webpack.ProvidePlugin({
+//     $: 'flatpickr/dis',
+//     flatpickr: 'flatpickr/dis/flatpickr.js'
+//   })
+// )
 module.exports = environment
