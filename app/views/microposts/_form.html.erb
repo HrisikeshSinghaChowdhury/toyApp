@@ -6,17 +6,17 @@
       <div>
         <div>
 
-          <%= form.label :content %>
-          <%= form.text_area :content %>
+              <%= form.label :content %>
+              <%= form.text_area :content %>
+              <%= form.date_field :published_at, as: :string, required: true, data: { controller: "flatpickr", flatpickr_min_date: Time.zone.now #disables past dates
+              } %>
+              <input type="hidden" name="id" value=<%=session[:user_id]%>><br>
 
-          <input type="hidden" name="id" value=<%=session[:user_id]%>>
+              <div class="actions">
+               &nbsp;&nbsp;<%= form.submit "Create my Blog" %>
+               <%= link_to 'Back', microposts_path, class: 'btn btn-secondary'%>
 
-          <br>
-            <div class="actions">
-             &nbsp;&nbsp;<%= form.submit "Create my Blog" %>
-             <%= link_to 'Back', microposts_path, class: 'btn btn-secondary'%>
-
-            </div>
+              </div>
         </div>
       </div>
 
