@@ -1,13 +1,20 @@
-<header>
-  <h3> QI Blog </h3>
+<title> QI Blog </title>
 
-    <nav>
-      <%= link_to "Home", root_path %>
-      <% if logged_in?%>
-          <%= link_to "Log out", logout_path, method: "delete" %>
-      <% else %>
-          <%= link_to "Log in", login_path %>
-      <% end%>
-    </nav>
-</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
 
+  <div class="container-fluid">
+
+    <% if logged_in?%>
+      <%= link_to "Log out", logout_path, class: "navbar-brand", method: "delete" %>
+    <% else %>
+      <%= link_to "Log in", login_path, class: "navbar-brand" %>
+    <% end%>
+
+    <form class="d-flex">
+      <%= link_to "Home", root_path, class: "navbar-brand" %>
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
+  </div>
+</nav>

@@ -1,5 +1,6 @@
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
+
     <div >
       <%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:
 
@@ -24,6 +25,12 @@
   <div>
     <%= form.label :"Upload Profile Photo" %>
     <%= form.file_field :avatar %>
+  </div>
+
+  <div>
+    <% if user.avatar.attached? %>
+      <%= link_to "Delete Profile ID", user, method: :delete, data: { confirm: 'Are you sure to delete your profile picture?' } %>
+    <%end%>
   </div>
 
   <div class="actions">

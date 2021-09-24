@@ -1,15 +1,17 @@
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: %i[edit create destroy update ]
-  before_action :chk_access, only: %i[ edit update destroy ]
+  before_action :logged_in_user, only: %i[create edit destroy update index show]
+  # before_action :chk_access, only: %i[ edit update destroy show ]
+  before_action :chk_access, only: %i[ index ]
 
   # GET /microposts or /microposts.json
   def index
-    @microposts = Micropost.all if logged_in?
+    @microposts = current_user.microposts
   end
 
   # GET /microposts/1 or /microposts/1.json
   def show
-    @microposts = current_user.microposts if logged_in?
+    @micropost =  Micropost.find(params[:id])
+    # @micropost.content
   end
 
   # GET /microposts/new
@@ -19,35 +21,36 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/1/edit
   def edit
+    @micropost = Micropost.find(params[:id])
   end
 
   # POST /microposts or /microposts.json
   def create
+    @micropost = Micropost.new
     @micropost = current_user.microposts.build(micropost_params) if logged_in?
 
-    if @microsoft.nil? && @micropost.save
-      flash[:success] = "Micropost created!"
-      redirect_to user_path(current_user)
-    else
-      flash[:danger] = "Sorry Content is empty"
-      redirect_to new_micropost_url
-    end
-   end
+    @micropost.save
+    # # respond_to do |format|
+
+    #   if @micropost.nil? && @micropost.save
+    #     format.js
+    #   else
+    #     #redirect_to new_micropost_url
+    #   end
+    # end
+  end
 
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update
-    if @micropost.update(micropost_params)
-      flash[:success] = "Micropost updated!"
-      redirect_to user_path(current_user)
-    else
-      flash[:danger] = "Sorry Content is empty"
-      redirect_to new_micropost_url
-    end
+    @micropost = Micropost.find(params[:id])
+    @micropost.update_columns(content: micropost_params[:content], published_on: \
+                              micropost_params[:published_on])
   end
 
   # DELETE /microposts/1 or /microposts/1.json
   def destroy
-    @micropost.destroy if logged_in?
+    @micropost = Micropost.find(params[:id])
+    @micropost.destroy
     flash[:success] = "Micropost was successfully destroyed."
     redirect_to microposts_url
   end
@@ -60,7 +63,7 @@ class MicropostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micropost_params
-      params.require(:micropost).permit(:id, :user_id, :content)
+      params.require(:micropost).permit(:id, :user_id, :content, :published_on)
     end
 
     # Confirms a logged-in user.
@@ -73,10 +76,11 @@ class MicropostsController < ApplicationController
     end
 
     def chk_access
-      @micropost = Micropost.find(params[:id])
-      if @micropost.user_id != current_user.id
+      # @micropost = Micropost.find(params[:id])
+      @microposts = current_user.microposts
+      if @microposts.first.user_id != current_user.id
         flash[:danger] = "Authoriztion failed"
-        render 'shared/error_authorization'
+        redirect_to shared/error_authorization
       end
     end
 end

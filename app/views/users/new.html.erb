@@ -1,48 +1,36 @@
 <%= provide(:title, 'Sign up') %>
   <%= form_with(model: @user) do |f| %>
-  <section>
-    <div>
+    <section>
+      <div class="card" style="background-color: yellow ;border-radius: 2px; height: 4%">
 
-     <div class="card" style="background-color: #a55 ;border-radius: 25px; height: 50%">
-      <div class="container">
+        <div class="container">
+          <table>
+            <tr>
+              <td><%= f.label :name %></td>
+              <td><%= f.text_field :name %></td>
+            </tr>
 
-        <table>
-          <tr>
-            <td><%= f.label :name %></td>
-            <td><%= f.text_field :name %></td>
-          </tr>
+            <tr>
+              <td><%= f.label :email %></td>
+              <td><%= f.email_field :email %></td>
+            </tr>
 
-          <tr>
-            <td><%= f.label :email %></td>
-            <td><%= f.email_field :email %></td>
-          </tr>
+            <tr>
+              <td><%= f.label :password %></td>
+              <td><%= f.password_field :password %></td>
+            </tr>
 
-          <tr>
-            <td><%= f.label :password %></td>
-            <td><%= f.password_field :password %></td>
-          </tr>
+            <tr>
+              <td><%= f.label :password_confirmation, "Confirmation"%></td>
+              <td><%= f.password_field :password_confirmation %></td>
+            </tr>
 
-          <tr>
-            <td><%= f.label :password_confirmation, "Confirmation"%></td>
-            <td><%= f.password_field :password_confirmation %></td>
-          </tr>
-
-          <tr>
-            <td><%= f.label :"Upload Profile Photo" %></td>
-            <td><%= f.file_field :avatar %></td>
-          </tr>
-
-          <div class="actions">
-            <%= f.submit "Create my account" %>
-            <%= link_to 'Back', root_path ,class: 'btn-secondary'%>
-          </div>
-
-        </table>
+            <div class="actions">
+              <%= f.submit "Create my account" %>
+              <%= link_to 'Back', root_path ,class: 'btn-secondary'%>
+            </div>
+          </table>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<% end %>
-
-
+    </section>
+  <% end %>

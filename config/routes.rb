@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   # get '/login/microposts', to: 'microposts#new'
-  get '/microposts', to: 'microposts#show'
+
   resources :users
-  resources :microposts, only: [:show, :new, :create, :destroy, :update, :edit]
+  resources :microposts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

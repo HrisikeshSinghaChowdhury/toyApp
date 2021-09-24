@@ -1,28 +1,37 @@
 <%= provide(:title, 'Log in Page') %>
+<div class="container-login">
+  <div class="login-content">
   <%= form_with(url: login_path, method: :post, local: true) do |f| %>
-<section>
-  <div>
-    <div class="card" style="background-color: #a55 ;border-radius: 25px; height: 50%">
-      <div class="container">
-        <table>
-         <tr>
-           <td><%= f.label :email %></td>
-           <td><%= f.email_field :email %></td>
-         </tr>
 
-         <tr>
-           <td><%= f.label :password %></td>
-           <td><%= f.password_field :password %></td>
-         </tr>
-        </table>
-         <div class="actions">
-          <%= f.submit "Log In" %>
-          <%= link_to 'Back', root_path ,class: 'btn-secondary'%>
-         </div>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;Welcome to Login Page</h4>
+
+      <div class="input-div one">
+
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+
+        <div class="div">
+          <%= f.label :email %>
+          <%= f.email_field :email, size: "25", placeholder: "Enter the email" %>
+        </div>
       </div>
-    </div>
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+
+        <div class="div">
+          <%= f.label :password %>
+          <%= f.password_field :password, size: "24", placeholder: "Enter the password" %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Log In" %>
+        <%= link_to 'Back', root_path %>
+      </div>
+    <% end %>
   </div>
-  </section>
-<% end %>
-
-
+</div>

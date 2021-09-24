@@ -1,31 +1,41 @@
-<%= provide(:title, @user.name+"-HomePage") %>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th class="table-info">Photo</th>
-      <th class="table-info">UserName</th>
-      <th class="table-info">UserEmail</th>
-      <th class="table-info">UserCreated Time</th>
-      <th class="table-info">UserUpdated Time</th>
-      <th colspan="3" class="table-primary">Actions</th>
-    </tr>
-  </thead>
+<%= provide(:title, "HomePage") %>
+<div class="flex-item">
 
-  <tbody>
-    <tr>
-        <td class="table-danger"><% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, style: 'width:22%;'%><%end%></td>
-        <td class="table-danger"><%= @user.name %></td>
-        <td class="table-danger"><%= @user.email %></td>
-        <td class="table-danger"><%= @user.created_at %></td>
-        <td class="table-danger"><%= @user.updated_at %></td>
-        <td class="table-secondary"><%= link_to 'Edit User', edit_user_path %></td>
-        <td class="table-secondary"><%= link_to 'Add New Blog', new_micropost_path %></td>
-        <td class="table-secondary"><%= link_to 'Blogs', microposts_path %></td>
+  <%= form_with(model: @user) do |f| %>
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th class="table-info">Photo</th>
+        <th class="table-info">UserName</th>
+        <th class="table-info">UserEmail</th>
+        <th class="table-info">UserCreated Time</th>
+        <th class="table-info">UserUpdated Time</th>
+        <th colspan="3" class="table-primary">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+          <td class="table-danger">
+            <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar, style: 'width:22%;'%>
+            <%else%>
+              <%= gravatar_for(@user)%>
+            <%end%>
+          </td>
+
+          <td class="table-danger"><%= @user.name %></td>
+          <td class="table-danger"><%= @user.email %></td>
+          <td class="table-danger"><%= @user.created_at %></td>
+          <td class="table-danger"><%= @user.updated_at %></td>
+          <td class="table-secondary"><%= link_to 'User Profile', edit_user_path %></td>
+          <td class="table-secondary"><%= link_to 'Blogs', microposts_path %></td>
         </tr>
-  </tbody>
-</table>
-
-
+    </tbody>
+   </table>
+ <% end%>
+ </div>
 
 

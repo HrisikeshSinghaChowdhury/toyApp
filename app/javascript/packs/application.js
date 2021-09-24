@@ -7,24 +7,9 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import '../js/bootstrap_js_files.js'
+import 'jquery'
+import 'flatpickr'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
- // $("#f :input").tooltip({
-
- //      // place tooltip on the right edge
- //      position: "center right",
-
- //      // a little tweaking of the position
- //      offset: [-2, 10],
-
- //      // use the built-in fadeIn/fadeOut effect
- //      effect: "fade",
-
- //      // custom opacity setting
- //      opacity: 0.7
-
- //      });
