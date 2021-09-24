@@ -1,25 +1,21 @@
 <%= provide(:title, 'Activity-Page') %>
-<%= form_with(model: @micropost, name: "addblog", method: "post", local: false) do |form| %>
+<%= form_with(model: item, local: false) do |form| %>
   <section>
     <div>
-
       <div>
         <div>
-
           <%= form.label :content %>
           <%= form.text_area :content %>
+          <%= form.text_field :published_on, class: 'flatpickr', required: true %>
+          <input type="hidden" name="id" value=<%=session[:user_id]%>><br>
 
-          <input type="hidden" name="id" value=<%=session[:user_id]%>>
-
-          <br>
-            <div class="actions">
+          <div class="actions">
              &nbsp;&nbsp;<%= form.submit "Create my Blog" %>
              <%= link_to 'Back', microposts_path, class: 'btn btn-secondary'%>
+          </div>
 
-            </div>
         </div>
       </div>
-
     </div>
   </section>
 <% end %>

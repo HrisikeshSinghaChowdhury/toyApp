@@ -1,7 +1,5 @@
-<% if logged_in? %>
-alert("Hii please proceed..");
-<%else%>
-alert("Sorry something went wrong");
-<%end%>
-var blogs = document.querySelector("#blogs");
-blogs.insertAdjacentHTML("beforeend", "<%= j render 'form', micropost: @micropost %>");
+$(document).ready(function(){
+  alert("Hii please proceed..");
+  $("#blogs").append("<%= j render 'form', item: @micropost %>");
+  flatpickr('.flatpickr',{ enableTime: true, dateFormat: "Y-m-d H:i" })
+})
