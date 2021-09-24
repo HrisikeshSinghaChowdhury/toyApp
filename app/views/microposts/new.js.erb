@@ -1,4 +1,5 @@
 $(document).ready(function(){
- alert("Hii please proceed..");
- $("#blogs").append("<%= j render 'form', micropost: @micropost %>");
-});
+  alert("Hii please proceed..");
+  $("#blogs").append("<%= j render 'form', item: @micropost %>");
+  flatpickr('.flatpickr',{ enableTime: true, dateFormat: "Y-m-d H:i" })
+})

@@ -1,32 +1,8 @@
-<%= provide(:title, 'Activity-Edit-Page') %>
-<h3>Editing Micropost</h3>
+<h1>Editing Microposts</h1>
 
-<!--# render 'form', micropost: @micropost -->
-
-<%= form_with(model: @micropost) do |form| %>
-  <section>
-    <div>
-
-      <div>
-        <div>
-
-          <%= form.label :content %>
-          <%= form.text_area :content %>
-
-          <input type="hidden" name="id" value=<%=session[:user_id]%>>
-
-          <br>
-            <div class="actions">
-             &nbsp;&nbsp;<%= form.submit "Update my Blog" %>
-             <%= link_to 'Back', user_path(current_user), class: 'btn btn-secondary'%>
-
-            </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-<% end %>
+<%= render 'form', micropost: @micropost %>
+<%= link_to 'Show', @micropost %>
+<%= link_to 'Back', microposts_path %>
 
 
 
