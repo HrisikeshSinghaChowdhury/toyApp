@@ -1,17 +1,5 @@
 <%= provide(:title, 'Sign up') %>
   <%= form_with(model: @user) do |f| %>
-
-    <% if @user.errors.any? %>
-      <div>
-        <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
-        <ul class="error_explanation">
-         <% @user.errors.each do |error| %>
-           <li><%= error.full_message %></li>
-    <% end %>
-        </ul>
-      </div>
-  <% end %>
-
   <section>
     <div>
 
@@ -37,6 +25,11 @@
           <tr>
             <td><%= f.label :password_confirmation, "Confirmation"%></td>
             <td><%= f.password_field :password_confirmation %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :"Upload Profile Photo" %></td>
+            <td><%= f.file_field :avatar %></td>
           </tr>
 
           <div class="actions">

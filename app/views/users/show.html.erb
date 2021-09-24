@@ -13,7 +13,8 @@
 
   <tbody>
     <tr>
-        <td class="table-danger"><%= gravatar_for @user %></td>
+        <td class="table-danger"><% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, style: 'width:22%;'%><%end%></td>
         <td class="table-danger"><%= @user.name %></td>
         <td class="table-danger"><%= @user.email %></td>
         <td class="table-danger"><%= @user.created_at %></td>

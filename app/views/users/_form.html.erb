@@ -13,12 +13,17 @@
 
   <div class="container">
     <%= form.label :name %>
-    <%= form.text_area :name %>
+    <%= form.text_field :name %>
   </div>
 
   <div id="non-editable" class="field">
     <%= form.label :email %>
-    <%= form.text_area :email%>
+    <%= form.email_field :email%>
+  </div>
+
+  <div>
+    <%= form.label :"Upload Profile Photo" %>
+    <%= form.file_field :avatar %>
   </div>
 
   <div class="actions">
