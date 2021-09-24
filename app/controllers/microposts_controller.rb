@@ -43,7 +43,8 @@ class MicropostsController < ApplicationController
   # PATCH/PUT /microposts/1 or /microposts/1.json
   def update
     @micropost = Micropost.find(params[:id])
-    @micropost.update_columns(content: micropost_params[:content])
+    @micropost.update_columns(content: micropost_params[:content], published_on: \
+                              micropost_params[:published_on])
   end
 
   # DELETE /microposts/1 or /microposts/1.json
@@ -62,7 +63,7 @@ class MicropostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micropost_params
-      params.require(:micropost).permit(:id, :user_id, :content)
+      params.require(:micropost).permit(:id, :user_id, :content, :published_on)
     end
 
     # Confirms a logged-in user.
